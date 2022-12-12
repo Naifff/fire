@@ -3,19 +3,19 @@ input.onButtonPressed(Button.A, function () {
     led.enable(false)
 })
 function filter () {
-    c = c + (b - c) * 0.8
+    c = c + (b - c) * 0.1
     led.setBrightness(c)
     basic.pause(100)
-    c = c + (b - c) * 0.8
+    c = c + (b - c) * 0.1
     led.setBrightness(c)
     basic.pause(100)
-    c = c + (b - c) * 0.8
+    c = c + (b - c) * 0.1
     led.setBrightness(c)
     basic.pause(100)
-    c = c + (b - c) * 0.8
+    c = c + (b - c) * 0.1
     led.setBrightness(c)
     basic.pause(100)
-    c = c + (b - c) * 0.8
+    c = c + (b - c) * 0.1
     led.setBrightness(c)
     basic.pause(100)
 }
