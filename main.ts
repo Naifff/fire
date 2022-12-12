@@ -5,14 +5,19 @@ input.onButtonPressed(Button.A, function () {
 function filter () {
     c = c + (b - c) * 0.8
     led.setBrightness(c)
+    basic.pause(100)
     c = c + (b - c) * 0.8
     led.setBrightness(c)
+    basic.pause(100)
     c = c + (b - c) * 0.8
     led.setBrightness(c)
+    basic.pause(100)
     c = c + (b - c) * 0.8
     led.setBrightness(c)
+    basic.pause(100)
     c = c + (b - c) * 0.8
     led.setBrightness(c)
+    basic.pause(100)
 }
 input.onButtonPressed(Button.B, function () {
     a = 1
