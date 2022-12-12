@@ -1,47 +1,72 @@
-input.onButtonPressed(Button.A, function () {
-    a = 0
-    led.enable(false)
+buttonClicks.onButtonSingleClicked(buttonClicks.AorB.B, function () {
+    if (_switch == 0) {
+        k += 0.05
+    } else {
+        delay += 5
+    }
 })
-input.onButtonPressed(Button.B, function () {
-    a = 1
+buttonClicks.onButtonDoubleClicked(buttonClicks.AorB.A, function () {
+    if (_switch == 0) {
+        _switch = 1
+    } else {
+        _switch = 0
+    }
+})
+input.onButtonPressed(Button.AB, function () {
+    if (a == 0) {
+        a = 1
+        led.enable(true)
+    } else {
+        a = 0
+        led.enable(false)
+    }
+})
+buttonClicks.onButtonSingleClicked(buttonClicks.AorB.A, function () {
+    if (_switch == 0) {
+        k += -0.05
+    } else {
+        delay += -5
+    }
+})
+buttonClicks.onButtonDoubleClicked(buttonClicks.AorB.B, function () {
+    a = 0
     led.enable(true)
+    led.setBrightness(255)
+    proportionalFont.showSpace(5, 150)
+    proportionalFont.showString("k = " + k + ", delay = " + delay, 150)
+    basic.showLeds(`
+        # # # # #
+        # # # # #
+        # # # # #
+        # # # # #
+        # # # # #
+        `)
 })
 let b = 0
+let delay = 0
+let _switch = 0
+let k = 0
 let a = 0
 a = 0
 let c = 255
+k = 0.01
+_switch = 0
+delay = 5
 led.enable(false)
-led.plot(0, 0)
-led.plot(1, 0)
-led.plot(2, 0)
-led.plot(3, 0)
-led.plot(4, 0)
-led.plot(0, 1)
-led.plot(1, 1)
-led.plot(2, 1)
-led.plot(3, 1)
-led.plot(4, 1)
-led.plot(0, 2)
-led.plot(1, 2)
-led.plot(2, 2)
-led.plot(3, 2)
-led.plot(4, 2)
-led.plot(0, 3)
-led.plot(1, 3)
-led.plot(2, 3)
-led.plot(3, 3)
-led.plot(4, 3)
-led.plot(0, 4)
-led.plot(1, 4)
-led.plot(2, 4)
-led.plot(3, 4)
-led.plot(4, 4)
+basic.showLeds(`
+    # # # # #
+    # # # # #
+    # # # # #
+    # # # # #
+    # # # # #
+    `)
 basic.forever(function () {
     if (a == 1) {
         b = randint(0, 255)
         for (let index = 0; index < 50; index++) {
             c = c + (b - c) * 0.01
             led.setBrightness(c)
+            basic.pause(delay)
         }
     }
 })
