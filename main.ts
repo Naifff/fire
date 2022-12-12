@@ -2,22 +2,14 @@ input.onButtonPressed(Button.A, function () {
     a = 0
     led.enable(false)
 })
-function filter () {
-    for (let index = 0; index < 9; index++) {
-        c = c + (b - c) * 0.1
-        led.setBrightness(c)
-        basic.pause(100)
-    }
-}
 input.onButtonPressed(Button.B, function () {
     a = 1
     led.enable(true)
 })
 let b = 0
-let c = 0
 let a = 0
 a = 0
-c = 255
+let c = 255
 led.enable(false)
 led.plot(0, 0)
 led.plot(1, 0)
@@ -47,6 +39,9 @@ led.plot(4, 4)
 basic.forever(function () {
     if (a == 1) {
         b = randint(0, 255)
-        filter()
+        for (let index = 0; index < 50; index++) {
+            c = c + (b - c) * 0.01
+            led.setBrightness(c)
+        }
     }
 })
