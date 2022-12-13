@@ -49,9 +49,9 @@ let k = 0
 let a = 0
 a = 0
 let c = 255
-k = 0.01
+k = 0.15
 _switch = 0
-delay = 5
+delay = 150
 led.enable(false)
 basic.showLeds(`
     # # # # #
@@ -63,8 +63,8 @@ basic.showLeds(`
 basic.forever(function () {
     if (a == 1) {
         b = randint(0, 255)
-        for (let index = 0; index < 50; index++) {
-            c = c + (b - c) * 0.01
+        for (let index = 0; index < 5; index++) {
+            c = c + (b - c) * k
             led.setBrightness(c)
             basic.pause(delay)
         }
